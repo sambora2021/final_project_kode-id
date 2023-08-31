@@ -1,12 +1,536 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>My CV</title>
+
+    <link rel="stylesheet" href="font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="glider/glider.css" />
+    <script src="glider/glider.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .menu li {
+            margin: 0 10px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #fff;
+            margin-right: 20px;
+        }
+
+        .menu li a:hover {
+            color: lightgray;
+        }
+
+        .sectionku {
+            position: relative;
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+
+        .containerku {
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        .barisku {
+            margin-left: -15px;
+            margin-right: -15px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .col-full {
+            flex: 0 0 100%;
+            max-width: 100%
+        }
+
+        .judul p {
+            font-size: 62px;
+            position: relative;
+            top: -86px;
+            color: rgba(160, 160, 160, 0.78);
+        }
+
+        .text-tengah {
+            text-align: center;
+        }
+
+        .margin-kosong {
+            margin-bottom: 0 !important
+        }
+
+        .font-bold {
+            font-weight: 600 !important;
+        }
+
+        .mt-3 {
+            margin-top: 1rem !important
+        }
+
+        .mt-4 {
+            margin-top: 1.5rem !important
+        }
+
+        .text-capitalize {
+            text-transform: capitalize !important
+        }
+
+        .col-lima {
+            -ms-flex: 0 0 41.666667%;
+            flex: 0 0 41.666667%;
+            max-width: 41.666667%
+        }
+
+        .col-tujuh {
+            -ms-flex: 0 0 58.333333%;
+            flex: 0 0 58.333333%;
+            max-width: 58.333333%
+        }
+
+        .about_social_icons ul li a {
+            font-size: 20px;
+            color: #5b6269;
+            padding-right: 15px;
+        }
+
+        .list-unstyled {
+            padding-left: 0;
+            list-style: none
+        }
+
+        .list-inline-item {
+            display: inline-block
+        }
+
+        .list-inline-item li a:hover {
+            color: lightgray;
+        }
+
+        .img-fluid {
+            max-width: 100%;
+            border-radius: 15px;
+            height: auto
+        }
+
+        .mx-auto {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        .d-block {
+            display: block !important
+        }
+
+        .gradient-border {
+            border-radius: 15px;
+            background-image: linear-gradient(to bottom right, #ff9900, #ff3366);
+            border: 2px solid transparent;
+            /* Hide original border */
+            padding: 10px;
+            /* Add some padding to make gradient visible */
+        }
+
+        .parag {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 18px;
+        }
+
+        .kotak-tengah {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 50vh;
+        }
+    </style>
+
+
+
+
+    // ========================================================= GLIDER SCRIPT dan CSS =================================
+    <script>
+        window.addEventListener('load', function () {
+            document.querySelector('.glider').addEventListener('glider-slide-visible', function (event) {
+                var glider = Glider(this);
+                console.log('Slide Visible %s', event.detail.slide)
+            });
+            document.querySelector('.glider').addEventListener('glider-slide-hidden', function (event) {
+                console.log('Slide Hidden %s', event.detail.slide)
+            });
+            document.querySelector('.glider').addEventListener('glider-refresh', function (event) {
+                console.log('Refresh')
+            });
+            document.querySelector('.glider').addEventListener('glider-loaded', function (event) {
+                console.log('Loaded')
+            });
+
+            window._ = new Glider(document.querySelector('.glider'), {
+                slidesToShow: 1, //'auto',
+                slidesToScroll: 1,
+                itemWidth: 150,
+                draggable: true,
+                scrollLock: false,
+                dots: '#dots',
+                rewind: true,
+                arrows: {
+                    prev: '.glider-prev',
+                    next: '.glider-next'
+                },
+                responsive: [
+                    {
+                        breakpoint: 800,
+                        settings: {
+                            slidesToScroll: 'auto',
+                            itemWidth: 300,
+                            slidesToShow: 'auto',
+                            exactWidth: true
+                        }
+                    },
+                    {
+                        breakpoint: 700,
+                        settings: {
+                            slidesToScroll: 4,
+                            slidesToShow: 4,
+                            dots: false,
+                            arrows: false,
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToScroll: 3,
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 500,
+                        settings: {
+                            slidesToScroll: 2,
+                            slidesToShow: 2,
+                            dots: false,
+                            arrows: false,
+                            scrollLock: true
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+
+    <style type="text/css">
+        * {
+            box-sizing: border-box
+        }
+
+        .glider-contain {
+            width: 90%;
+            max-width: 997px;
+            margin: 0 auto;
+        }
+
+        .glider-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+            border: 3px solid currentColor;
+            background-image: url('img/penghargaan.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+
+        }
+
+        .glider-slide img {
+            width: 100%;
+        }
+
+        .glider-slide .slide-title {
+            font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+            font-size: 2rem;
+            position: relative;
+            top: 100px;
+        }
+
+        .glider-slide:nth-child(4n+1) {
+            color: #8cc9f0;
+        }
+
+        .glider-slide:nth-child(4n+2) {
+            color: #a89cc8;
+        }
+
+        .glider-slide:nth-child(4n+3) {
+            color: #efa8b0;
+        }
+
+        .glider-slide:nth-child(4n) {
+            color: #9ef096;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Untuk Final Project</h1>
-    <h2>Tes Edit</h2>
+    <header class="fixed-header">
+        <div class="logo">
+            <img src="ricky.png" alt="Logo">
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#pengalaman">Pengalaman Kerja</a></li>
+                <li><a href="#riwayat">Riwayat Pendidikan</a></li>
+                <li><a href="#keterampilan">Keterampilan</a></li>
+                <li><a href="#minat">Minat</a></li>
+                <li><a href="#penghargaan">Penghargaan</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="tentang" class="sectionku">
+        <div class="containerku">
+            <div class="barisku">
+                <div class="col-full">
+                    <div class="judul text-tengah">
+                        <p class="margin-kosong">Tentang</p>
+                    </div>
+                </div>
+            </div>
+            <div class="barisku">
+                <div class="col-lima">
+                    <div class="mt-3 gradient-border">
+                        <img src="https://ricky.profile.espacialartwork.co.id/assets/img/intro-bg.jpg" alt="Foto"
+                            class="img-fluid mx-auto d-block">
+                    </div>
+                </div>
+
+                <div class="col-tujuh">
+                    <div class="mt-3" style="text-align: center;">
+                        <h4 class="text-capitalize">Nama Saya Rikky Andrian.</span></h4>
+                        <h5 class="mt-3">Junior Programming</h5>
+
+                        <div class="about_social_icons mt-4">
+                            <p class="font-bold"> Telp : <span class="">085771172883</span></p>
+                            <p class="font-bold"> E-Mail: <span class="font-bold">rickysambora111@gmail.com</span> </p>
+                            <div class="about_social_icons mt-4">
+                                <ul class="list-unstyled">
+                                    <li class="list-inline-item"><a href="https://www.facebook.com/sambora07"><i
+                                                class="fa fa-facebook"></i></a></li>
+                                    <li class="list-inline-item"><a href="https://wa.me/6285771172883"><i
+                                                class="fa fa-whatsapp"></i></a></li>
+                                    <li class="list-inline-item"><a href="https://www.instagram.com/gro0t7"><i
+                                                class="fa fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pengalaman">
+        <div class="containerku">
+            <div class="barisku">
+                <div class="col-full">
+                    <div class="judul text-tengah">
+                        <p class="margin-kosong">Pengalaman Kerja</p>
+                    </div>
+                </div>
+            </div>
+            <div class="barisku">
+                <div class="col-tujuh">
+                    <div class="mt-3 kotak-tengah">
+                        <p class="parag">Telah bekerja di CV.ESPACIAL ARTWORK kurang lebih 3 tahun menjadi seorang
+                            juniur programmer.</p>
+                    </div>
+                </div>
+
+                <div class="col-lima">
+                    <div class="mt-3 gradient-border">
+                        <img src="img/pengalaman.png" alt="Foto"
+                            class="img-fluid mx-auto d-block">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="riwayat">=
+        <div class="containerku">
+            <div class="barisku">
+                <div class="col-full">
+                    <div class="judul text-tengah">
+                        <p class="margin-kosong">Riwayat Pendidikan</p>
+                    </div>
+                </div>
+            </div>
+            <div class="barisku">
+                <div class="col-lima">
+                    <div class="mt-3 gradient-border">
+                        <img src="img/pendidikan.jpeg" alt="Foto" class="img-fluid mx-auto d-block" style="height: 350px;">
+                    </div>
+                </div>
+                <div class="col-tujuh">
+                    <div class="mt-3 kotak-tengah">
+                        <div class="about_social_icons mt-4">
+                            <p class="parag">Rikky andrian dilahirkan di kota Sampit Kabupaten Kotawaringin Timur, pada
+                                tanggal 06 juni 1996.
+                                Merupakan anak pertama dari dua bersaudara. Saya telah menempuh pendidikan tingkat dasar
+                                di SDN 3 Sampit selesai
+                                pada tahun 2008, Kemudian melanjutkan ke jenjang pendidikan menengah pertama di SMPN 9
+                                Sampit selesai pada tahun
+                                2011 dan melanjutkan ke jenjang pendidikan menengah kejuruan di SMK Negeri 1 Sampit
+                                jurusan Rekayasa Perangkat
+                                Lunak (RPL) selesai pada tahun 2014. Pada tahun yang sama saya melanjutkan pendidikan ke
+                                jenjang Sarjana (S1) di
+                                Universitas Muhammadiyah Gresik. Dan akhirnya pada tahun 2020 menyelesaikan pendidikan
+                                Sarjana (S1) di Universitas
+                                Muhammadiyah Gresik.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="keterampilan">
+        <div class="containerku">
+            <div class="barisku">
+                <div class="col-full">
+                    <div class="judul text-tengah">
+                        <p class="margin-kosong">Keterampilan</p>
+                    </div>
+                </div>
+            </div>
+            <div class="barisku">
+                <div class="col-tujuh">
+                    <div class="mt-3 kotak-tengah">
+                        <div class="about_social_icons mt-4">
+                            <p class="parag">Saya terampil dalam bidang programmer (meskipun tidak pro), saya sudah
+                                kurang lebih 3 tahun bergelut dengan bahasa pemprograman php dan database mysqlm
+                                bisa menggunakan css dan javascript, meskipun tidak terampil dalam mendesain antar muka,
+                                dan juga dalam 3 tahun ini saya hanya menggunakan framework laravel.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lima">
+                    <div class="mt-3 gradient-border">
+                        <img src="img/skill.jpeg" alt="Foto" class="img-fluid mx-auto d-block" style="height: 350px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="minat">
+        <div class="containerku">
+            <div class="barisku">
+                <div class="col-full">
+                    <div class="judul text-tengah">
+                        <p class="margin-kosong">Minat</p>
+                    </div>
+                </div>
+            </div>
+            <div class="barisku">
+                <div class="col-lima">
+                    <div class="mt-3 gradient-border">
+                        <img src="img/minat.png" alt="Foto" class="img-fluid mx-auto d-block" style="height: 350px;">
+                    </div>
+                </div>
+                <div class="col-tujuh">
+                    <div class="mt-3 kotak-tengah">
+                        <div class="about_social_icons mt-4">
+                            <p class="parag">
+                                Saya sangat tertarik pada dunia pemrograman karena kemampuannya untuk menciptakan solusi
+                                kreatif bagi masalah yang kompleks.
+                                Saya telah belajar berbagai bahasa pemrograman, seperti Php, Java, javascript,
+                                reactnative dan livewire, dan telah mengembangkan aplikasi sederhana yang membantu
+                                mengotomatisasi tugas sehari-hari.
+                                Minat saya dalam pemrograman memberi saya kepuasan dalam menyelesaikan teka-teki logika
+                                dan membuat produk digital yang bermanfaat bagi orang lain.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="penghargaan">
+        <div class="containerku">
+            <div class="barisku">
+                <div class="col-full">
+                    <div class="judul text-tengah">
+                        <p class="margin-kosong">Penghargaan</p>
+                    </div>
+                </div>
+            </div>
+            <div class="barisku">
+                <div class="glider-contain">
+                    <div class="glider">
+                        <div><span class="slide-title">Penghargaan 1</span></div>
+                        <div><span class="slide-title">Penghargaan 2</span></div>
+                        <div><span class="slide-title">Penghargaan 3</span></div>
+                        <div><span class="slide-title">Penghargaan 4</span></div>
+                        <div><span class="slide-title">Penghargaan 5</span></div>
+                        <div><span class="slide-title">Penghargaan 6</span></div>
+                        <div><span class="slide-title">Penghargaan 7</span></div>
+                        <div><span class="slide-title">Penghargaan 8</span></div>
+                        <div><span class="slide-title">Penghargaan 9</span></div>
+                        <div><span class="slide-title">Penghargaan 10</span></div>
+                        <div><span class="slide-title">Penghargaan 11</span></div>
+                        <div><span class="slide-title">Penghargaan 12</span></div>
+                        <div><span class="slide-title">Penghargaan 13</span></div>
+                        <div><span class="slide-title">Penghargaan 14</span></div>
+                        <div><span class="slide-title">Penghargaan 15</span></div>
+                        <div><span class="slide-title">Penghargaan 16</span></div>
+                    </div>
+                    <button class="glider-prev">&laquo;</button>
+                    <button class="glider-next">&raquo;</button>
+                    <div id="dots"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
+
 </html>
